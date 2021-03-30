@@ -3,6 +3,7 @@ package everis.com.becamobilemovie.View
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ import everis.com.becamobilemovie.Model.ClickMovieItemListener
 import everis.com.becamobilemovie.Model.MoviesAdapter
 import everis.com.becamobilemovie.View.MovieDetailActivity.Companion.EXTRA_FILM
 import everis.com.becamobilemovie.ViewModel.MoviesViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ClickMovieItemListener {
 
@@ -30,15 +32,16 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
 
         initObserv()
         bindview()
+        loadingVisibility(true)
     }
     fun initObserv(){
         moviesViewModel.moviesList.observe(this, { list ->
-            UpdateList(list)
+            if (list.isNotEmpty()){
+                UpdateList(list)
+                loadingVisibility(false)
+            }
         })
     }
-
-
-
     fun bindview(){
         rvList.adapter = Adapter
         rvList.layoutManager = LinearLayoutManager(this)
@@ -51,5 +54,9 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
         val intent = Intent(this, MovieDetailActivity::class.java)
         intent.putExtra(EXTRA_FILM, Movie)
         startActivity(intent)
+    }
+
+    private fun loadingVisibility(loading: Boolean){
+        ProgressBar.visibility = if (loading) View.VISIBLE else View.GONE
     }
 }
