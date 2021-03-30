@@ -5,5 +5,6 @@ data class Movies(
     var name: String,
     var capa: String,
     var sinopse: String,
-    var raiting: Double
+    var raiting: Double,
+    var lançamento: String
 )
