@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import everis.com.becamobilemovie.MovieDetailActivity.Companion.EXTRA_FILM
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), ClickMovieItemListener {
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
 
     override fun ClickItemMovie(Movie: Movies) {
         val intent = Intent(this,MovieDetailActivity::class.java)
+        intent.putExtra(EXTRA_FILM, Movie)
         startActivity(intent)
     }
 }
