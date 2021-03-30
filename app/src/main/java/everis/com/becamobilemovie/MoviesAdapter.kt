@@ -1,7 +1,5 @@
 package everis.com.becamobilemovie
 
-import android.content.Context
-import android.graphics.Movie
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ContactRecyclerView: RecyclerView.Adapter<ContactRecyclerView.ContactAdapterViewHolder>() {
+class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.ContactAdapterViewHolder>() {
 
     private val ListMovies: MutableList<Movies> = mutableListOf()
 

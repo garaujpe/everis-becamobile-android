@@ -2,13 +2,48 @@ package everis.com.becamobilemovie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private val rvList: RecyclerView by lazy {
+        findViewById<RecyclerView>(R.id.RV_List)
+    }
+    private val Adapter = MoviesAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        BTN_inicial
+        bindview()
+        UpdateList()
+    }
+    fun bindview(){
+        rvList.adapter = Adapter
+        rvList.layoutManager = LinearLayoutManager(this)
+    }
+    fun UpdateList(){
+        Adapter.UpdateAdapter(
+            arrayListOf(
+                Movies(
+                    id = 0,
+                    name = "Filme 1",
+                    capa = "Imagem de Capa",
+                    sinopse = "Este é um texto de exemplo",
+                    raiting = 10.0,
+                    lançamento = "20/01/2021"
+                ),
+                Movies(
+                    id = 1,
+                    name = "Filme 2",
+                    capa = "Imagem de Capa",
+                    sinopse = "Este é um texto de exemplo",
+                    raiting = 5.0,
+                    lançamento = "13/03/2021"
+                )
+            )
+        )
     }
 }
