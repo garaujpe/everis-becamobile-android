@@ -1,6 +1,8 @@
 package everis.com.becamobilemovie
 
+import android.content.Context
 import android.graphics.Movie
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +12,8 @@ class ContactRecyclerView: RecyclerView.Adapter<ContactRecyclerView.ContactAdapt
     private val ListMovies: MutableList<Movies> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactAdapterViewHolder {
-        TODO("Not yet implemented")
+        val View = LayoutInflater.from(parent.context).inflate()
+
     }
     override fun onBindViewHolder(holder: ContactAdapterViewHolder, position: Int) {
         holder.bind(ListMovies[position])

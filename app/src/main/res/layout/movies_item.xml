@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/IM_Movie"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/descrition"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            tools:src="@tools:sample/avatars"/>
+
+        <TextView
+            android:id="@+id/Text_Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/IM_Movie"
+            app:layout_constraintStart_toEndOf="@id/IM_Movie"
+            android:layout_marginStart="10dp"
+            tools:text="Nome do Filme"/>
+
+        <TextView
+            android:id="@+id/Text_Raiting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Text_Name"
+            app:layout_constraintStart_toStartOf="@id/Text_Name"
+            android:layout_marginTop="5dp"
+            tools:text="Avaliação"/>
+        
+        <TextView
+            android:id="@+id/Text_Lançamento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/Text_Raiting"
+            app:layout_constraintStart_toStartOf="@id/Text_Raiting"
+            app:layout_constraintBottom_toBottomOf="@id/IM_Movie"
+            tools:text="Lançamento"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
