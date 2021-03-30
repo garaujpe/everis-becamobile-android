@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/IM_Movie"
@@ -23,6 +24,7 @@
             android:id="@+id/Text_Name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             app:layout_constraintTop_toTopOf="@id/IM_Movie"
             app:layout_constraintStart_toEndOf="@id/IM_Movie"
             android:layout_marginStart="10dp"
@@ -32,6 +34,7 @@
             android:id="@+id/Text_Raiting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/Text_Name"
             app:layout_constraintStart_toStartOf="@id/Text_Name"
             android:layout_marginTop="5dp"
@@ -41,6 +44,7 @@
             android:id="@+id/Text_Lançamento"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/Text_Raiting"
             app:layout_constraintStart_toStartOf="@id/Text_Raiting"
             app:layout_constraintBottom_toBottomOf="@id/IM_Movie"
