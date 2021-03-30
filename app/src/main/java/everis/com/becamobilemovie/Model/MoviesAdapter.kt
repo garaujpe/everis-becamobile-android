@@ -1,14 +1,13 @@
-package everis.com.becamobilemovie
+package everis.com.becamobilemovie.Model
 
-import android.icu.text.Transliterator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
+import everis.com.becamobilemovie.DataClass.Movies
+import everis.com.becamobilemovie.R
 
 class MoviesAdapter(var Listener: ClickMovieItemListener)
     : RecyclerView.Adapter<MoviesAdapter.ContactAdapterViewHolder>() {

@@ -1,4 +1,4 @@
-package everis.com.becamobilemovie
+package everis.com.becamobilemovie.DataClass
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

@@ -1,7 +1,9 @@
-package everis.com.becamobilemovie
+package everis.com.becamobilemovie.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import everis.com.becamobilemovie.DataClass.Movies
+import everis.com.becamobilemovie.R
 
 class MovieDetailActivity : AppCompatActivity() {
     private var Movie: Movies? = null

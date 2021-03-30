@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BecaMobileMovie">
-        <activity android:name=".MovieDetailActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".View.MovieDetailActivity"></activity>
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
