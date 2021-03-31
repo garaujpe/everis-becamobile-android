@@ -1,16 +1,17 @@
 package everis.com.becamobilemovie.Api
 
 import everis.com.becamobilemovie.DataClass.Movies
-import everis.com.becamobilemovie.DataClass.MoviesResult
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface MovieApi {
+interface MovieDetailsApi {
     companion object{
         const val API_KEY = "a9db10997b829bfe25d6c577d6817f3b"
-        const val ROTA = "3/trending/movie/week?api_key="
+        const val ROTA1 = "3/movie/"
+        const val ID = "791373"
+        const val ROTA2 = "?api_key="
         const val LANGUAGE = "&language=pt-BR"
     }
-    @GET(ROTA + API_KEY + LANGUAGE)
-    fun getAllMovies(): Call<MoviesResult>
+    @GET(ROTA1 + ID + ROTA2 + API_KEY + LANGUAGE)
+    fun getMovie(): Call<Movies>
 }

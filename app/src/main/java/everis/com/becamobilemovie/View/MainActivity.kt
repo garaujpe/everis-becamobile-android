@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), ClickMovieItemListener {
 
     private val rvList: RecyclerView by lazy {
-        findViewById<RecyclerView>(R.id.RV_List)
+        findViewById(R.id.RV_List)
     }
     private val Adapter = MovieAdapter(this)
     private lateinit var moviesViewModel: MoviesViewModel
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
 
     override fun ClickItemMovie(Movie: Movies) {
         val intent = Intent(this, MovieDetailActivity::class.java)
-        intent.putExtra(EXTRA_FILM, Movie)
+        intent.putExtra(EXTRA_FILM, Movie.id)
         startActivity(intent)
     }
 

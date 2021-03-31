@@ -21,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Name Film"
         android:textColor="@color/black"
         android:gravity="center"
         android:layout_marginTop="10dp"
@@ -34,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:text="flims's Description"
         android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +44,6 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="@color/black"
-        android:text="0.00"
-
         app:layout_constraintTop_toBottomOf="@id/Text_Overview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/Text_Overview"/>
@@ -56,12 +52,21 @@
         android:id="@+id/Text_Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2001/01/01"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/Text_Overview"
         app:layout_constraintTop_toBottomOf="@id/Text_Overview" />
+
+    <ProgressBar
+        android:id="@+id/ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
