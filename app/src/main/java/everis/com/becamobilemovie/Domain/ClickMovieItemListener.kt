@@ -1,4 +1,4 @@
-package everis.com.becamobilemovie.Model
+package everis.com.becamobilemovie.Domain
 
 import everis.com.becamobilemovie.DataClass.Movies
 

@@ -5,16 +5,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import everis.com.becamobilemovie.Api.MovieRestApiTask
+import everis.com.becamobilemovie.Data.MovieRepository
 import everis.com.becamobilemovie.DataClass.Movies
-import everis.com.becamobilemovie.Repository.MovieRepository
+import everis.com.becamobilemovie.Implementation.MovieDataSourceImplementation
+import everis.com.becamobilemovie.UseCase.MoviesListUseCase
 import kotlin.Exception
 
 class MoviesViewModel: ViewModel() {
     companion object{
         const val TAG = "MoviesViewModel"
     }
-    val movieRestApiTask = MovieRestApiTask()
-    val movieRepository = MovieRepository(movieRestApiTask)
+    private val movieRestApiTask = MovieRestApiTask()
+    private val movieDataSource = MovieDataSourceImplementation(movieRestApiTask)
+    private val movieRepository = MovieRepository(movieDataSource)
+    private val moviesListUseCase = MoviesListUseCase(movieRepository)
 
     private var _moviesList = MutableLiveData<List<Movies>>()
     val moviesList: LiveData<List<Movies>>
@@ -26,7 +30,7 @@ class MoviesViewModel: ViewModel() {
     private fun getAllMovies(){
         Thread{
             try {
-                _moviesList.postValue(movieRepository.getAllMovies())
+                _moviesList.postValue(moviesListUseCase.invoke())
             }catch (exception: Exception){
                 Log.d(TAG,exception.message.toString())
             }

@@ -1,10 +1,11 @@
-package everis.com.becamobilemovie.Repository
+package everis.com.becamobilemovie.Implementation
 
 import android.util.Log
 import everis.com.becamobilemovie.Api.MovieRestApiTask
+import everis.com.becamobilemovie.Data.MovieDataSource
 import everis.com.becamobilemovie.DataClass.Movies
 
-class MovieRepository(private val movieRestApiTask: MovieRestApiTask) {
+class MovieDataSourceImplementation(private val movieRestApiTask: MovieRestApiTask): MovieDataSource {
 
     companion object{
         const val TAG = "MovieRepository"
@@ -12,7 +13,8 @@ class MovieRepository(private val movieRestApiTask: MovieRestApiTask) {
 
     private val movieList = arrayListOf<Movies>()
 
-    fun getAllMovies(): List<Movies>{
+
+    override fun getAllMovies(): List<Movies> {
         val request = movieRestApiTask.retrofiApi().getAllMovies().execute()
         if(request.isSuccessful){
             request.body()?.let {
@@ -25,7 +27,4 @@ class MovieRepository(private val movieRestApiTask: MovieRestApiTask) {
         }
         return movieList
     }
-
-
-
 }

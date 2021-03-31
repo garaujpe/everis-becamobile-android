@@ -1,4 +1,4 @@
-package everis.com.becamobilemovie.Model
+package everis.com.becamobilemovie.Domain
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,18 +8,23 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import everis.com.becamobilemovie.DataClass.Movies
 import everis.com.becamobilemovie.R
+import kotlinx.android.synthetic.main.movies_item.view.*
 
 class MoviesAdapter(var Listener: ClickMovieItemListener)
-    : RecyclerView.Adapter<MoviesAdapter.ContactAdapterViewHolder>() {
+    : RecyclerView.Adapter<MoviesAdapter.moviesViewHolder>() {
 
     private val ListMovies: MutableList<Movies> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactAdapterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): moviesViewHolder {
         val View = LayoutInflater.from(parent.context).inflate(R.layout.movies_item,parent,false)
-        return ContactAdapterViewHolder(View,ListMovies,Listener)
+        return moviesViewHolder(View,ListMovies,Listener)
     }
-    override fun onBindViewHolder(holder: ContactAdapterViewHolder, position: Int) {
-        holder.bind(ListMovies[position])
+    override fun onBindViewHolder(holder: moviesViewHolder, position: Int) {
+        holder.itemView.apply {
+            Text_Name.text = ListMovies[position].name
+            Text_Lançamento.text = ListMovies[position].lançamento
+            Text_Raiting.text = ListMovies[position].raiting.toString()
+        }
     }
     override fun getItemCount(): Int = ListMovies.size
 
@@ -29,7 +34,7 @@ class MoviesAdapter(var Listener: ClickMovieItemListener)
         notifyDataSetChanged()
     }
 
-    inner class ContactAdapterViewHolder(itemView: View, var List: List<Movies>, var Listener: ClickMovieItemListener)
+    inner class moviesViewHolder(itemView: View, var List: List<Movies>, var Listener: ClickMovieItemListener)
         : RecyclerView.ViewHolder(itemView){
         private val TVName: TextView = itemView.findViewById(R.id.Text_Name)
         private val TVRaiting: TextView = itemView.findViewById(R.id.Text_Raiting)
@@ -40,14 +45,6 @@ class MoviesAdapter(var Listener: ClickMovieItemListener)
             itemView.setOnClickListener{
                 Listener.ClickItemMovie(List[adapterPosition])
             }
-        }
-
-        fun bind(Movie: Movies){
-            TVName.text = Movie.name
-            TVRaiting.text = Movie.raiting.toString()
-            TVLançamento.text = Movie.lançamento
-
-
         }
     }
 

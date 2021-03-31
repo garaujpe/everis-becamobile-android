@@ -1,6 +1,7 @@
 package everis.com.becamobilemovie.Api
 
 import everis.com.becamobilemovie.DataClass.Movies
+import everis.com.becamobilemovie.DataClass.MoviesResult
 import retrofit2.Call
 import retrofit2.http.GET
 

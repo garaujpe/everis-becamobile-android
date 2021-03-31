@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import everis.com.becamobilemovie.*
 import everis.com.becamobilemovie.DataClass.Movies
-import everis.com.becamobilemovie.Model.ClickMovieItemListener
-import everis.com.becamobilemovie.Model.MoviesAdapter
+import everis.com.becamobilemovie.Domain.ClickMovieItemListener
+import everis.com.becamobilemovie.Domain.MoviesAdapter
 import everis.com.becamobilemovie.View.MovieDetailActivity.Companion.EXTRA_FILM
 import everis.com.becamobilemovie.ViewModel.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
         moviesViewModel = ViewModelProvider.NewInstanceFactory().create(MoviesViewModel::class.java)
         moviesViewModel.init()
 
+        loadingVisibility(true)
         initObserv()
         bindview()
-        loadingVisibility(true)
     }
     fun initObserv(){
         moviesViewModel.moviesList.observe(this, { list ->
