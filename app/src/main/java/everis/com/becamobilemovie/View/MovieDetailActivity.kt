@@ -11,9 +11,14 @@ import everis.com.becamobilemovie.R
 import everis.com.becamobilemovie.ViewModel.MoviesDetailsViewModel
 import kotlinx.android.synthetic.main.activity_main.ProgressBar
 import kotlinx.android.synthetic.main.activity_movie_detail.*
+import java.net.URL
 
 class MovieDetailActivity : AppCompatActivity(), ClickMovieItemListener {
 
+    companion object{
+        const val EXTRA_FILM: String = "EXTRA_FILM"
+        const val URL_BASE_IMAGENS = "https://image.tmdb.org/t/p/w500"
+    }
 
     private var idMovies:Int = 0
     private lateinit var moviesDetailsViewModel: MoviesDetailsViewModel
@@ -43,15 +48,11 @@ class MovieDetailActivity : AppCompatActivity(), ClickMovieItemListener {
         Text_Overview.text = movie.sinopse
         Text_Date.text = movie.lançamento
         Text_Notas.text = movie.raiting.toString()
-        Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.capa).into(Image_Capa)
+        Picasso.get().load(URL_BASE_IMAGENS + movie.capa).into(Image_Capa)
     }
 
     private fun getExtra(){
       idMovies = intent.getIntExtra(EXTRA_FILM,0)
-    }
-
-    companion object{
-        const val EXTRA_FILM: String = "EXTRA_FILM"
     }
 
     override fun onSupportNavigateUp(): Boolean {

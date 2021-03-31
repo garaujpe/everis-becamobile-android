@@ -11,6 +11,10 @@ import kotlinx.android.synthetic.main.movies_item.view.*
 
 class MovieAdapter(private var Listener: ClickMovieItemListener): RecyclerView.Adapter<MoviesViewHolder>(){
 
+    companion object{
+        const val URL_BASE_IAMGENS = "https://image.tmdb.org/t/p/w500"
+    }
+
     private val movieList = arrayListOf<Movies>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder{
@@ -24,7 +28,7 @@ class MovieAdapter(private var Listener: ClickMovieItemListener): RecyclerView.A
             Text_Name.text = movieList[position].name
             Text_Raiting.text = movieList[position].raiting.toString()
             Text_Lançamento.text = movieList[position].lançamento
-            Picasso.get().load("https://image.tmdb.org/t/p/w342" + movieList[position].capa).into(IM_Movie)
+            Picasso.get().load(URL_BASE_IAMGENS + movieList[position].capa).into(IM_Movie)
         }
     }
     override fun getItemCount():Int = movieList.size
