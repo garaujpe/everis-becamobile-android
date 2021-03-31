@@ -32,8 +32,8 @@ class MovieDetailAdapter(private var Listener: ClickMovieItemListener): Recycler
 
     override fun getItemCount(): Int = 1
 
-    fun UpdateAdapter(movie: Movies){
-        this.movie = movie
+    fun UpdateAdapter(movieRecebido: Movies){
+        this.movie = movieRecebido
         notifyDataSetChanged()
     }
 }
