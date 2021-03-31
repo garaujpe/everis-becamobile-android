@@ -11,7 +11,6 @@ import everis.com.becamobilemovie.R
 import everis.com.becamobilemovie.ViewModel.MoviesDetailsViewModel
 import kotlinx.android.synthetic.main.activity_main.ProgressBar
 import kotlinx.android.synthetic.main.activity_movie_detail.*
-import kotlinx.android.synthetic.main.movies_item.*
 
 class MovieDetailActivity : AppCompatActivity(), ClickMovieItemListener {
 
@@ -44,8 +43,7 @@ class MovieDetailActivity : AppCompatActivity(), ClickMovieItemListener {
         Text_Overview.text = movie.sinopse
         Text_Date.text = movie.lançamento
         Text_Notas.text = movie.raiting.toString()
-
-        Picasso.get().load(movie.capa).into(Image_Capa)
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.capa).into(Image_Capa)
     }
 
     private fun getExtra(){

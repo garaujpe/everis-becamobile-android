@@ -24,7 +24,7 @@ class MovieAdapter(private var Listener: ClickMovieItemListener): RecyclerView.A
             Text_Name.text = movieList[position].name
             Text_Raiting.text = movieList[position].raiting.toString()
             Text_Lançamento.text = movieList[position].lançamento
-            Picasso.get().load(movieList[position].capa).into(IM_Movie)
+            Picasso.get().load("https://image.tmdb.org/t/p/w342" + movieList[position].capa).into(IM_Movie)
         }
     }
     override fun getItemCount():Int = movieList.size
