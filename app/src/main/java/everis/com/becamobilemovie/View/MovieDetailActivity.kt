@@ -2,26 +2,16 @@ package everis.com.becamobilemovie.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.View
-import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import everis.com.becamobilemovie.DataClass.Movies
 import everis.com.becamobilemovie.Domain.ClickMovieItemListener
-import everis.com.becamobilemovie.Domain.MovieAdapter
-import everis.com.becamobilemovie.Domain.MovieDetailAdapter
 import everis.com.becamobilemovie.R
 import everis.com.becamobilemovie.ViewModel.MoviesDetailsViewModel
-import everis.com.becamobilemovie.ViewModel.MoviesViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.ProgressBar
 import kotlinx.android.synthetic.main.activity_movie_detail.*
-import kotlinx.android.synthetic.main.activity_movie_detail.view.*
 import kotlinx.android.synthetic.main.movies_item.*
-import kotlinx.android.synthetic.main.movies_item.view.*
 
 class MovieDetailActivity : AppCompatActivity(), ClickMovieItemListener {
 
@@ -50,10 +40,11 @@ class MovieDetailActivity : AppCompatActivity(), ClickMovieItemListener {
     }
 
     private fun UpdateMovie(movie: Movies) {
-        Text_Name.text = movie.name
+        Text_Title.text = movie.name
         Text_Overview.text = movie.sinopse
         Text_Date.text = movie.lançamento
         Text_Notas.text = movie.raiting.toString()
+
         Picasso.get().load(movie.capa).into(Image_Capa)
     }
 
