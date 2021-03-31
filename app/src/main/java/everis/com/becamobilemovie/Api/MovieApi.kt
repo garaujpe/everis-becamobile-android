@@ -11,5 +11,5 @@ interface MovieApi {
         const val ROTA = "3/trending/movie/week?api_key="
     }
     @GET(ROTA + API_KEY)
-    fun getAllMovies(): Call<List<Movies>>
+    fun getAllMovies(): Call<MoviesResult>
 }

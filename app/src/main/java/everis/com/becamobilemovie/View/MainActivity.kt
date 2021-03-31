@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import everis.com.becamobilemovie.*
 import everis.com.becamobilemovie.DataClass.Movies
 import everis.com.becamobilemovie.Domain.ClickMovieItemListener
-import everis.com.becamobilemovie.Domain.MoviesAdapter
+import everis.com.becamobilemovie.Domain.MovieAdapter
 import everis.com.becamobilemovie.View.MovieDetailActivity.Companion.EXTRA_FILM
 import everis.com.becamobilemovie.ViewModel.MoviesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
     private val rvList: RecyclerView by lazy {
         findViewById<RecyclerView>(R.id.RV_List)
     }
-    private val Adapter = MoviesAdapter(this)
+    private val Adapter = MovieAdapter(this)
     private lateinit var moviesViewModel: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

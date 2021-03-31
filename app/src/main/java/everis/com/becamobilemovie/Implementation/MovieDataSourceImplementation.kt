@@ -18,7 +18,7 @@ class MovieDataSourceImplementation(private val movieRestApiTask: MovieRestApiTa
         val request = movieRestApiTask.retrofiApi().getAllMovies().execute()
         if(request.isSuccessful){
             request.body()?.let {
-                movieList.addAll(it)
+                movieList.addAll(it.results)
             }
         }else{
             request.errorBody()?.let {
