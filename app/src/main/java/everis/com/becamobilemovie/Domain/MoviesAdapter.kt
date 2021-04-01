@@ -45,5 +45,6 @@ class MoviesViewHolder(itemView: View, var List: List<Movies>, var Listener: Cli
         itemView.setOnClickListener{
             Listener.ClickItemMovie(List[adapterPosition])
         }
+
     }
 }

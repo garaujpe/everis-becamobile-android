@@ -1,9 +1,12 @@
 package everis.com.becamobilemovie.View
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +36,13 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
         loadingVisibility(true)
         initObserv()
         bindview()
+        Image_Busca.setOnClickListener{
+            loadingVisibility(true)
+            filtroFilmes()
+            val view = currentFocus
+            val Keyboard = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            Keyboard.hideSoftInputFromWindow(view?.windowToken, 0)
+        }
     }
     fun initObserv(){
         moviesViewModel.moviesList.observe(this, { list ->
@@ -58,5 +68,28 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
 
     private fun loadingVisibility(loading: Boolean){
         ProgressBar.visibility = if (loading) View.VISIBLE else View.GONE
+    }
+
+    private fun filtroFilmes(){
+        val mutableListFilms = mutableListOf<Movies>()
+        moviesViewModel.moviesList.observe(this, { list ->
+            if (list.isNotEmpty()) {
+                if (EdText_Busca.text.isNotEmpty()){
+                    for (movie in list) {
+                        if (movie.name.contains(EdText_Busca.text)) {
+                            mutableListFilms.add(movie)
+                        } else {
+                            Toast.makeText(this,"Não encontrado nada correspondente", Toast.LENGTH_LONG).show()
+                            loadingVisibility(false)
+                        }
+                    }
+                    UpdateList(mutableListFilms)
+                    loadingVisibility(false)
+                }else{
+                    UpdateList(list)
+                    loadingVisibility(false)
+                }
+            }
+        })
     }
 }
