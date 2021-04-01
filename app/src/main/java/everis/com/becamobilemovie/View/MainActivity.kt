@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
         loadingVisibility(true)
         initObserv()
         bindview()
+
         Image_Busca.setOnClickListener{
             loadingVisibility(true)
             filtroFilmes()
@@ -78,13 +79,15 @@ class MainActivity : AppCompatActivity(), ClickMovieItemListener {
                     for (movie in list) {
                         if (movie.name.contains(EdText_Busca.text)) {
                             mutableListFilms.add(movie)
-                        } else {
-                            Toast.makeText(this,"Não encontrado nada correspondente", Toast.LENGTH_LONG).show()
-                            loadingVisibility(false)
                         }
                     }
-                    UpdateList(mutableListFilms)
-                    loadingVisibility(false)
+                    if(mutableListFilms.isNotEmpty()){
+                        UpdateList(mutableListFilms)
+                        loadingVisibility(false)
+                    }else {
+                        Toast.makeText(this,"Não encontrado nada correspondente", Toast.LENGTH_SHORT).show()
+                        loadingVisibility(false)
+                    }
                 }else{
                     UpdateList(list)
                     loadingVisibility(false)
