@@ -10,11 +10,11 @@ class MovieDetailDataSourceImplementation(private val movieRestApiTask: MovieRes
     companion object{
         const val TAG = "MovieDetailDataSource"
     }
-
     private lateinit var movieDetail: Movies
+    private var id = 299536
 
     override fun getMovie(): Movies {
-        val request = movieRestApiTask.retrofitDetailsApi().getMovie().execute()
+        val request = movieRestApiTask.retrofitDetailsApi().getMovie(id).execute()
         if(request.isSuccessful){
             request.body()?.let {
                 movieDetail = it
@@ -25,5 +25,8 @@ class MovieDetailDataSourceImplementation(private val movieRestApiTask: MovieRes
             }
         }
         return movieDetail
+    }
+    fun setId(id: Int){
+        this.id = id
     }
 }
