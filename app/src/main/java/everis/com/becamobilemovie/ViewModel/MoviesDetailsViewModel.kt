@@ -14,19 +14,19 @@ class MoviesDetailsViewModel: ViewModel() {
     companion object{
         const val TAG = "MoviesDetailsViewModel"
     }
-    private val movieRestApiTask = MovieRestApiTask()
-    private val movieDataSource = MovieDetailDataSourceImplementation(movieRestApiTask)
-    private val movieRepository = MovieDetailRepository(movieDataSource)
-    private val moviesDetailsUseCase = MoviesDetailsUseCase(movieRepository)
 
     private var _movie = MutableLiveData<Movies>()
     val movie: LiveData<Movies>
         get() = _movie
 
-    fun init(){
-        getMovies()
+    fun init(id:Int){
+        val movieRestApiTask = MovieRestApiTask()
+        val movieDataSource = MovieDetailDataSourceImplementation(movieRestApiTask,id)
+        val movieRepository = MovieDetailRepository(movieDataSource)
+        val moviesDetailsUseCase = MoviesDetailsUseCase(movieRepository)
+        getMovies(moviesDetailsUseCase)
     }
-    private fun getMovies(){
+    private fun getMovies(moviesDetailsUseCase: MoviesDetailsUseCase){
         Thread{
             try {
                 _movie.postValue(moviesDetailsUseCase.invoke())

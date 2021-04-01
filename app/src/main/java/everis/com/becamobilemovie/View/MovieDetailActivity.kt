@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
 import everis.com.becamobilemovie.DataClass.Movies
 import everis.com.becamobilemovie.Domain.ClickMovieItemListener
-import everis.com.becamobilemovie.Implementation.MovieDetailDataSourceImplementation
 import everis.com.becamobilemovie.R
 import everis.com.becamobilemovie.ViewModel.MoviesDetailsViewModel
 import kotlinx.android.synthetic.main.activity_main.ProgressBar
@@ -28,12 +27,14 @@ class MovieDetailActivity : AppCompatActivity(), ClickMovieItemListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
 
+
         moviesDetailsViewModel = ViewModelProvider.NewInstanceFactory().create(MoviesDetailsViewModel::class.java)
-        moviesDetailsViewModel.init()
+        getExtra()
+        moviesDetailsViewModel.init(idMovies)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         loadingVisibility(true)
-        getExtra()
+
         initObserve()
     }
 
